@@ -4,7 +4,7 @@ import logo from '../../logo.svg'
 
 
 const Footer = () => (   
-<footer className="footer">
+	<footer className="footer">
 		<img src={logo} alt="logo Space X" className="logo"/>
 		<nav className="footer-nav">
 			<ul className="list">
@@ -16,9 +16,7 @@ const Footer = () => (
 		</nav>
 		<p className="footer-text">
 			For additional questions, contact
-			<a className="footer-link" href="mailto:rideshare@spacex.com"
-			>rideshare@spacex.com</a
-			>
+			<a className="footer-link" href="mailto:rideshare@spacex.com">rideshare@spacex.com</a>
 		</p>
 	</footer>
 );

@@ -4,45 +4,6 @@ import logo from '../../logo.svg';
 
 const Calendar = () => (
     <>
-    <header className="header">
-		<img
-				src={logo}
-				alt="Logo Space X"
-				className="logo"
-		/>
-		<nav className="main-nav nav">
-			<ul className="list">
-				<li className="item">
-					<a href="#" className="item-link">Falcon 1</a>
-				</li>
-				<li className="item">
-					<a href="#" className="item-link">Falcon 9</a>
-				</li>
-				<li className="item">
-					<a href="#" className="item-link">Falcon Heavy</a>
-				</li>
-				<li className="item">
-					<a href="#" className="item-link">Updates</a>
-				</li>
-			</ul>
-		</nav>
-		<nav className="secondary-nav">
-			<ul className="list">
-				<li className="item">
-					<a href="#" className="item-link">Home</a>
-				</li>
-				<li className="item">
-					<a href="calendar.html" className="item-link">Calendar</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<section className="main">
-		<h1 className="title">
-			Calendar SpaceX
-		</h1>
-	</section>
-
 	<section className="calendar">
 		<div className="container">
 			<ul className="calendar-list">
@@ -111,24 +72,7 @@ const Calendar = () => (
 		</div>
 	</section>
 
-	<footer className="footer">
-		<img src={logo} alt="logo Space X" className="logo"/>
-		<nav className="footer-nav">
-			<ul className="list">
-				<li className="item"><a href="#" className="item-link">Elon Musk Twitter</a></li>
-				<li className="item"><a href="#" className="item-link">Twitter</a></li>
-				<li className="item"><a href="#" className="item-link">Flickr</a></li>
-				<li className="item"><a href="#" className="item-link">website</a></li>
-			</ul>
-		</nav>
-		<p className="footer-text">
-			For additional questions, contact
-			<a className="footer-link" href="mailto:rideshare@spacex.com"
-			>rideshare@spacex.com</a
-			>
-		</p>
 
-	</footer>
     </>
 )
 
