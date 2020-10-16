@@ -1,7 +1,7 @@
 import React from 'react';
 import './features.css';
-// import rocket from '../../falcon-1.png';
 import RellaxWrapper from 'react-rellax-wrapper';
+
 
 const rocketImg = {
 	'Falcon 1': 'falcon-1',
@@ -10,10 +10,16 @@ const rocketImg = {
 	'Starship': 'starship',
 };
 
-const Features = (props) => (
+const Features = (props) => {
+
+	const {name, height, diameter, mass, payload_weights: payloadWeights, description} = props;
+
+	return (
+	<>
+	
 	<section className="features">
 		<h2 className="features-title">
-			{props.rocket} <br/>Overview
+			{name} <br/>Overview
 		</h2>
 		<div className="overview">
 
@@ -25,36 +31,34 @@ const Features = (props) => (
 					<tr>
 						<td className="table-column">HEIGHT</td>
 						<td className="table-column">
-							{/* {props.rocketFeatures.height} */}
-							22.25 m / 73 ft
+						{height.meters} m / {height.feet} ft
 						</td>
 					</tr>
 					<tr>
 						<td className="table-column">DIAMETER</td>
-						<td className="table-column">
-							{/* {rocketFeatures.diameter} */}
-							1.68 m / 5.5 ft
+						<td className="table-column">							
+							{diameter.meters} m / {diameter.feet}  ft
 						</td>
 					</tr>
 					<tr>
 						<td className="table-column">MASS</td>
 						<td className="table-column">
-							{/* {rocketFeatures.mass} */}
-							30,146 kg / 66,460 lb
+							{mass.kg} kg / {mass.lb} lb
 						</td>
 					</tr>
-					<tr>
-						<td className="table-column">PAYLOAD TO LEO</td>
-						<td className="table-column">
-							{/* {rocketFeatures.payload_weights} */}
-							450 kg / 992 lb
-						</td>
-					</tr>
+					{payloadWeights.map(item => 
+						(<tr key={item.id}>
+							<td className="table-column">PAYLOAD TO {item.id.toUpperCase()}</td>
+							<td className="table-column">
+								{/* {rocketFeatures.payload_weights} */}
+								{item.kg} kg / {item.lb} lb
+							</td>
+						</tr>))}
 				</thead>
 			</table>
 			<RellaxWrapper speed={20}>
                 <img
-                        src={`./img/${rocketImg[props.rocket]}.png`}
+                        src={`img/${rocketImg[name]}.png`}
                         alt="rocket"
                         className="rocket"
     			/>
@@ -62,13 +66,14 @@ const Features = (props) => (
 			<article>
 				<h3 className="features-subtitle">DESCRIPTION</h3>
 				<p className="features-text">
-					{/* {rocketFeatures.description} */}
-					The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.
+					{description}
+					
 				</p>
 			</article>
 		</div>
 	</section>
-
+	</>
 )
+}
 
 export default Features;
