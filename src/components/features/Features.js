@@ -1,6 +1,7 @@
 import React from 'react';
 import './features.css';
 import RellaxWrapper from 'react-rellax-wrapper';
+import Main from '../main/Main';
 
 
 const rocketImg = {
@@ -16,7 +17,7 @@ const Features = (props) => {
 
 	return (
 	<>
-	
+	<Main rocket={name} />
 	<section className="features">
 		<h2 className="features-title">
 			{name} <br/>Overview

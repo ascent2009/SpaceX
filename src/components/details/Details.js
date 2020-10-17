@@ -1,36 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import Youtube from 'react-youtube';
 import './details.css';
 import Main from '../main/Main';
-import { Link } from 'react-router-dom';
+import useLaunches from '../../Hooks/useLaunches';
 
-const goBack = () => {
-    window.history.back();
-  };
 
 const Details = (props) => {
 	
-const {name, links, details, webcast} = props;	
-console.log('data', props);
+	const [launch, setLaunch] = useState(null);
+
+	const { getLaunch } = useLaunches();
+
+	useEffect(() => {
+		setLaunch(getLaunch(props.match.params.id));
+	}, [getLaunch])
+
+	const history = useHistory()	
+
+	if(!launch) {return null}
+		
+console.log('launch', launch);
 
 	return (
 		<>
-			<Main />
+			<Main name={launch.name}/>
 			<main className="details">
 					<div className="container">
 						<div className="details-row">
 							<div className="details-image">
-								{/* <img src="https://images2.imgbox.com/3c/0e/T8iJcSN3_o.png" alt="" /> */}
-								{/* <img src={links.patch.small} alt="" /> */}
+
+								<img src={launch.links.patch.small} alt={launch.name} />
 							</div>
 							<div className="details-content">
-								<p className="details-description">{details}</p>
+								<p className="details-description">{launch.details}</p>
 							</div>
 						</div>
-						<div>
-							<iframe className="details-youtube" width="560" height="315" src={webcast} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullScreen></iframe>
-						</div>
+						<Youtube className="details-youtube" videoId={launch.links.youtube_id}/>
 					</div>
-					<Link to='' className="button button-back" onClick={goBack}>go back</Link>
+					<a className="button button-back" onClick={history.goBack}>go back</a>
 			</main>
 		</>
 	)
